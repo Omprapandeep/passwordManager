@@ -1,0 +1,7 @@
+li{
+  cursor: pointer;
+}
+.password-cell {
+  font-family: monospace;
+  font-size: 15px;
+}
