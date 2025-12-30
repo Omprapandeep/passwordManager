@@ -4,6 +4,7 @@ import Footer from './Footer';
 import { ToastContainer, toast } from 'react-toastify';
 import { v4 as uuidv4 } from 'uuid';
 
+const BASE_URL = "http://localhost:3000" || "http://localhost:3000";
 
 const Manager = (props) => {
     const [form, setform] = useState({
@@ -18,14 +19,21 @@ const Manager = (props) => {
     const ref = useRef(null);
     const passwordref = useRef();
 
-    useEffect(() => {
-        const fetchpasswords = async () => {
-            const password = await fetch("http://localhost:3000/");
-            const data = await password.json();
-            setpassword(data);
-        }
-        fetchpasswords();
-    }, [])
+   useEffect(() => {
+  const fetchPasswords = async () => {
+    try {
+      const res = await fetch(`${BASE_URL}/`);
+      if (!res.ok) throw new Error("Failed to fetch passwords");
+      const data = await res.json();
+      setpassword(data); // set state with fetched data
+    } catch (err) {
+      console.error(err);
+      toast.error("Failed to load passwords!");
+    }
+  };
+  fetchPasswords();
+}, []);
+
 
     const copyText = async (text) => {
         toast('Copied to clipboard!', {
@@ -68,7 +76,7 @@ const Manager = (props) => {
         }
 
         if (form._id) {
-            const res = await fetch(`http://localhost:3000/${form._id}`, {
+            const res = await fetch(`${BASE_URL}/${form._id}`, {
                 method: "PUT",
                 headers: { "content-type": "application/json" },
                 body: JSON.stringify({
@@ -89,7 +97,7 @@ const Manager = (props) => {
 
         }
         else {
-            const res = await fetch("http://localhost:3000", {
+            const res = await fetch(`${BASE_URL}`, {
                 method: "POST",
                 headers: { "content-type": "application/json" },
                 body: JSON.stringify(form),
@@ -125,7 +133,7 @@ const Manager = (props) => {
         let c = confirm("Do you want to delete password?");
         if (!c) return;
 
-        const res = await fetch(`http://localhost:3000/${_id}`, {
+        const res = await fetch(`${BASE_URL}/${_id}`, {
             method: "DELETE",
         });
 
@@ -269,7 +277,7 @@ const Manager = (props) => {
                             
                                     <tbody className="bg-green-50 text-gray-800 divide-y divide-gray-200">
                                         {password.map((item, index) => (
-                                            <tr key={item.id} className="hover:bg-green-100 transition-colors">
+                                            <tr key={item._id} className="hover:bg-green-100 transition-colors">
                                                 {/* Website */}
                                                 <td className="px-6 py-4 align-middle">
                                                     <div className="flex items-center gap-2 max-w-[300px] truncate">
@@ -356,7 +364,7 @@ const Manager = (props) => {
 
                             <div className="space-y-4 w-[80vw] mx-auto md:hidden">
                                 {password.map((item) => (
-                                    <div key={item.id} className="bg-white rounded-lg shadow-md p-4 space-y-2">
+                                    <div key={item._id} className="bg-white rounded-lg shadow-md p-4 space-y-2">
                                         <div>
                                             <span className="font-semibold text-gray-700">Website: </span>
                                             <a href={item.site} target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">

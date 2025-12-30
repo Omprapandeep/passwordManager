@@ -78,7 +78,7 @@ app.put('/:id', async (req, res) => {
 
 // Start server AFTER connecting to DB
 connectDB().then(() => {
-  app.listen(port, () => {
+  app.listen(port,'0.0.0.0', () => {
     console.log(`Server running at http://localhost:${port}`);
   });
 });

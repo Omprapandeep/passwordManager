@@ -44,7 +44,7 @@ const Navbar = (props) => {
         <li onClick={() => props.settheme(!props.theme)} className="hover:text-emerald-300 border-b-2 border-transparent hover:border-emerald-300 transition-colors duration-300">
           <img className='invert' width={27} height={27} src={props.theme ? "./icon/moon.png" : "./icon/daylight.png"} alt="" />
         </li>
-        <li><a href="https://github.com/Omprapandeep/omtodo" target="_blank" rel="noopener noreferrer" className=" hover:text-emerald-300 border-b-2 border-transparent hover:border-emerald-300 transition-colors duration-300"><img className='invert' width={30} height={30} src="./icon/github.svg" alt="" /></a></li>
+        <li><a href="https://github.com/Omprapandeep" target="_blank" rel="noopener noreferrer" className=" hover:text-emerald-300 border-b-2 border-transparent hover:border-emerald-300 transition-colors duration-300"><img className='invert' width={30} height={30} src="./icon/github.svg" alt="" /></a></li>
       </ul>
     </nav>
 
