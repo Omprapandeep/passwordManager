@@ -53,6 +53,8 @@ app.post('/', async (req, res) => {
 app.delete('/:id', async (req, res) => {
 
     const {id}=req.params;
+     console.log("DELETE HIT");
+   console.log("ID RECEIVED:", req.params.id);
 
     const collection = db.collection('passwords'); // use passwords collection
     const result = await collection.deleteOne({_id: new ObjectId(id)});
@@ -65,6 +67,7 @@ app.delete('/:id', async (req, res) => {
 app.put('/:id', async (req, res) => {
 
     const {id}=req.params;
+   
     const { site, username, password } = req.body;
     const collection = db.collection('passwords'); // use passwords collection
     const result = await collection.updateOne(

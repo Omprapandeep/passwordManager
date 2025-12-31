@@ -4,7 +4,7 @@ import Footer from './Footer';
 import { ToastContainer, toast } from 'react-toastify';
 import { v4 as uuidv4 } from 'uuid';
 
-const BASE_URL = "http://localhost:3000" || "http://localhost:3000";
+const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
 
 const Manager = (props) => {
     const [form, setform] = useState({
@@ -22,7 +22,7 @@ const Manager = (props) => {
    useEffect(() => {
   const fetchPasswords = async () => {
     try {
-      const res = await fetch(`${BASE_URL}/`);
+      const res = await fetch(BASE_URL);
       if (!res.ok) throw new Error("Failed to fetch passwords");
       const data = await res.json();
       setpassword(data); // set state with fetched data
