@@ -1,12 +1,69 @@
-# React + Vite
+# 🔐 Password Manager – PassOP
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack password manager web application that allows users to securely store, view, update, and delete their passwords.  
+Built using React (Vite), Node.js, Express, and MongoDB Atlas, and fully deployed on cloud platforms.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Live Demo
 
-## Expanding the ESLint configuration
+Frontend (Vercel):  
+https://password-manager-smoky.vercel.app
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Backend:  
+Deployed on Render (used internally by the frontend)
+
+---
+
+## ✨ Features
+
+- Add new passwords  
+- Edit existing passwords  
+- Delete saved passwords  
+- Show / hide passwords  
+- Copy site, username, and password to clipboard  
+- Light & Dark theme support  
+- Real-time UI updates  
+- Cloud-based storage using MongoDB Atlas  
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+- React (Vite)
+- Tailwind CSS
+- React Toastify
+- Fetch API
+
+### Backend
+- Node.js
+- Express.js
+- MongoDB (Native Driver)
+- CORS
+- dotenv
+
+### Database
+- MongoDB Atlas (Cloud NoSQL)
+
+### Deployment
+- Frontend: Vercel
+- Backend: Render
+
+---
+
+## 🏗️ Project Architecture
+
+React (Vite) – Frontend (Vercel)  
+↓ REST API  
+Node.js + Express – Backend (Render)  
+↓  
+MongoDB Atlas – Cloud Database  
+
+---
+
+## ⚙️ Environment Variables
+
+### Frontend (.env)
+```env
+VITE_API_URL=https://your-backend-url.onrender.com
